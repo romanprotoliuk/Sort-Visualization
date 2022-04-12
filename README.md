@@ -15,3 +15,32 @@ In the past few weeks I've been learning a lot about different sorting algrorith
 * sort button
 * reshuffle button  
 
+## Daily Sprints
+### Tuesday
+* Research/Planning,
+* Need to fully understand MergeSort
+* Figure out an algorithm that randomly shuffles numbers 
+* Basic app set up (button on click shows 0-500 numbers, display these numbers)
+* Set up a bit of styiling to showcase bars, put numbers for pixel values, this should make these bars apear on the screen
+
+### Wednesday 
+* Implement Merge Sort Algorithm 
+* Figure out how to trace algorthims steps and add animation to them 
+* Apply Styiling to animation 
+
+### Thursday 
+* Implement Merge Sort Algorithm 
+* Figure out how to trace algorthims steps and add animation to them 
+* Apply Styiling to animation 
+
+### Friday
+* By this day Merge Sort should be working fine with animations 
+* Make graph dynamic to any screen size
+* Start implementing Quick Sort, Heap Sort, Bubble Sort
+
+### Saturday 
+* implementation of Quick Sort, Heap Sort, Bubble Sort
+
+### Sunday 
+* Add dynamic array change toggle 
+* better styling 

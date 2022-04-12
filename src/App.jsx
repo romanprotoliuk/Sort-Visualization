@@ -1,8 +1,12 @@
+import './App.css';
+import SortGraph from './SortGraph/SortGraph';
+
+
 const App = () => {
   return (
-    <>
-      <h1>Hello World!</h1>
-    </>
+    <div className="App">
+      <SortGraph></SortGraph>
+    </div>
   )
 } 
 

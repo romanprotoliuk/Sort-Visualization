@@ -44,3 +44,6 @@ In the past few weeks I've been learning a lot about different sorting algrorith
 ### Sunday 
 * Add dynamic array change toggle 
 * better styling 
+
+
+

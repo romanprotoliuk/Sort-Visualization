@@ -14,19 +14,46 @@ const SortGraph = () => {
     const array = []
     
     for (let i = 0; i< 50; i++) {
-      array.push(getRandomNumber(5, 200))
+      array.push(getRandomNumber(5, 100))
     }
     setArr(array)
   } 
   
+  const MergeSortRun = () => {
+    
+    const MergeSort = (arr) => {
+      if (arr.length === 1) {
+        return arr;
+      }
   
+      const center = Math.floor(arr.length / 2);
+      const left = arr.slice(0, center);
+      const right = arr.slice(center);
+  
+      return Merge(MergeSort(left), MergeSort(right));
+    }
+
+    const Merge = (left, right) => {
+      const results = [];
+  
+      while (left.length && right.length) {
+        if (left[0] < right[0]) {
+          results.push(left.shift());
+        } else {
+          results.push(right.shift());
+        }
+      }
+      return[ ...results, ...left, ...right ];
+    }
+    
+    setArr(MergeSort(arr))
+  }
+
+
 
   const mappedArray = arr.map((num, i) => {
-    // return <div className='wrapper-num'><p className='numbers' key={i} style={{ height: `${num * 2.5}px` }}>{num}</p><div className='bar'></div></div>
-    return <div className='wrapper-forall'><div className='color-block' style={{height: `${num * 2}px`}}></div><p className='numbers'>{num}</p></div>
+    return <div className='wrapper-forall'><div className='color-block' style={{height: `${num * 4}px`}}></div><p className='numbers'>{num}</p></div>
   })
-
-    // <p>{num}<p/>
 
   return (
     <>
@@ -42,6 +69,12 @@ const SortGraph = () => {
 
           <div className='button-wrapper'>
             <button onClick={resetArray}>new array</button>
+          </div>
+          <div className='all-buttons-wrapper'>
+            <button className='btn-sort' onClick={MergeSortRun}>Merge Sort</button>
+            <button className='btn-sort'>Quick Sort</button>
+            <button className='btn-sort'>Heap Sort</button>
+            <button className='btn-sort'>Bubble Sort</button>
           </div>
         </div>
       </div>

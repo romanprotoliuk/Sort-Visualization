@@ -22,10 +22,22 @@
   justify-content: center;
   align-self: flex-end; */
   position: absolute;
-  bottom: 3%;
+  bottom: 6%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.all-buttons-wrapper {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn-sort:not(:last-child) {
+  margin-right: 10px;
+}
+
 
 .bars-wrapper {
   /* position: absolute; */

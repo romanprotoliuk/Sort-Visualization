@@ -6,25 +6,27 @@ const SortGraph = () => {
   
   const [arr, setArr] = useState([])
 
-  // useEffect((
-
-  // ), [arr])
-
-
+  useEffect(() => {
+    resetArray()
+  }, [])
+  
   const resetArray = () => {
     const array = []
-
-    for (let i = 0; i< 100; i++) {
-      array.push(getRandomNumber(0, 100))
+    
+    for (let i = 0; i< 50; i++) {
+      array.push(getRandomNumber(5, 200))
     }
     setArr(array)
   } 
-
-  console.log(arr)
+  
+  
 
   const mappedArray = arr.map((num, i) => {
-    return <p>{num}</p>
+    // return <div className='wrapper-num'><p className='numbers' key={i} style={{ height: `${num * 2.5}px` }}>{num}</p><div className='bar'></div></div>
+    return <div className='wrapper-forall'><div className='color-block' style={{height: `${num * 2}px`}}></div><p className='numbers'>{num}</p></div>
   })
+
+    // <p>{num}<p/>
 
   return (
     <>

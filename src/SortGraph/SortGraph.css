@@ -26,3 +26,33 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.bars-wrapper {
+  /* position: absolute; */
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /* height: 100%; */
+}
+
+.color-block {
+  width: 15px;
+  background-color: cadetblue;
+}
+
+.numbers {
+  font-size: 8px;
+  /* background-color: turquoise; */
+}
+
+p {
+  margin-block-end: 0em;
+  margin-block-start: 0em;
+}
+
+.wrapper-forall {
+  display: flex;
+  flex-direction: column;
+  margin: 0 3px;
+}

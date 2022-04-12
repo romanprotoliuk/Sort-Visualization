@@ -25,13 +25,13 @@ In the past few weeks I've been learning a lot about different sorting algrorith
 
 ### Wednesday 
 * Implement Merge Sort Algorithm 
-* Figure out how to trace algorthims steps and add animation to them 
-* Apply Styiling to animation 
+* Figure out how to trace algorthim steps and add animation to them 
+* Apply styling to animation 
 
 ### Thursday 
 * Implement Merge Sort Algorithm 
-* Figure out how to trace algorthims steps and add animation to them 
-* Apply Styiling to animation 
+* Figure out how to trace algorthim steps and add animation to them 
+* Apply styling to animation 
 
 ### Friday
 * By this day Merge Sort should be working fine with animations 

@@ -1,6 +1,5 @@
 # Visualizer for Sorting Algorithms 
 
-* the technologies you plan on using
 ## Tech used
 React
 

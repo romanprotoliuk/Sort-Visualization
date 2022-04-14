@@ -14,8 +14,8 @@ const SortGraph = () => {
   const resetArray = () => {
     const array = []
     
-    for (let i = 0; i< 10; i++) {
-      array.push(getRandomNumber(5, 15))
+    for (let i = 0; i< 50; i++) {
+      array.push(getRandomNumber(5, 100))
     }
     setArr(array)
   } 
@@ -30,24 +30,24 @@ const SortGraph = () => {
       const isColorChange = i % 3 !== 2;
       if (isColorChange) {
         const [barOneIdx, barTwoIdx] = animations[i];
+        console.log('this is animations', animations)
         const barOneStyle = arrayBars[barOneIdx].style;
         const barTwoStyle = arrayBars[barTwoIdx].style;
         const color = i % 3 === 0 ? 'red' : 'cadetblue'
         setTimeout(() => {
-          console.log('animations[i]', animations[i])
+          // console.log('animations[i]', animations[i])
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
           // const [barOneIdx, newHeight] = animations[i];
           // document.getElementById("num").innerHTML = `${newHeight}`;
-        }, i * 200);
+        }, i * 30);
       } else {
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
-          barOneStyle.height = `${newHeight * 8}px`;
+          barOneStyle.height = `${newHeight * 4}px`;
           // document.getElementById("num").innerHTML = `${newHeight}`;
-          barOneStyle.backgroundColor = 'hotpink'
-        }, i * 200);
+        }, i * 30);
       }
       // figure out how to put sorted values in purple 
 
@@ -57,7 +57,7 @@ const SortGraph = () => {
 
 
   const mappedArray = arr.map((num, i) => {
-    return <div className='wrapper-forall'><div className='color-block' style={{height: `${num * 8}px`}}></div><p id='num' className='numbers'>{num}</p></div>
+    return <div className='wrapper-forall'><div className='color-block' style={{height: `${num * 4}px`}}></div></div>
   })
 
   return (
@@ -94,3 +94,6 @@ export default SortGraph
 const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
+
+// disable button while the animation is going 

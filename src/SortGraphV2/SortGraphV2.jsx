@@ -1,6 +1,9 @@
 import '../SortGraph/SortGraph.css'
 import { useState, useEffect } from 'react'
 import * as algorithms from '../algorithms/Algorithms'
+import Box from '@mui/material/Box';
+import { SpeedSlider } from '../components/SpeedSlider';
+import Slider from '@mui/material/Slider';
 
 
 const SortGraph = () => {
@@ -19,21 +22,26 @@ const SortGraph = () => {
       bar.style.backgroundColor = 'cadetblue'
     })
 
-    for (let i = 0; i< 50; i++) {
-      array.push(getRandomNumber(5, 100))
+    for (let i = 0; i< 175; i++) {
+      array.push(getRandomNumber(5, 125))
     }
     setArr(array)
   } 
   
+  // 10 entires, 50px wide, 150ms speed    
+  // 25 entries, 25px wide, 100ms speed
+  // 50 entries, 15px wide, 50ms speed
+  // 100 entries, 8px wide, 30ms speed
+  // 175 entries, 4px wide, 10ms speed
+
 
   const MergeSortRun = () => {
     // this gives us history of animations 
     // [ [[0,1],[0,1] ...], [[0,1],[0,1] ...], [[0,1],[0,1] ...]]
-    // first number represents the before index the second swap index
+    // first number represents the before index the second overwritten index
     const animations = algorithms.MergeSort(arr);
     // console.log(animations)
     for (let i = 0; i < animations.length; i++) {
-      console.log(animations[i])
       const arrayBars = document.getElementsByClassName('color-block');
       // here we are dealing with a value change
       // every three value we have a new start of a new animation 
@@ -53,48 +61,40 @@ const SortGraph = () => {
         setTimeout(() => {
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
-          // setTimeout(() => {
-          //   barOneStyle.backgroundColor = 'blue'
-          // }, i * 5)
-        //   if(animations.length - 1 === i) {
-        //     console.log('loop ends');
-        //     barOneStyle.backgroundColor = 'pink'
-        // }
-        }, i * 20);
+        }, i * 10);
       } else {
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
-          barOneStyle.height = `${newHeight * 4}px`;
-          // barOneStyle.backgroundColor = 'cadetblue'
-          
-          // setTimeout(() => {
-          //   barOneStyle.backgroundColor = 'blue'
-          // }, i * 5)
+          barOneStyle.height = `${newHeight * 3}px`;
           if(animations.length - 1 === i) {
-            console.log('loop ends');
+            // console.log('loop ends');
             const barss = document.querySelectorAll('.color-block')
-            console.log(barss)
             barss.forEach((bar) => {
               bar.style.backgroundColor = 'orange'
             })
-            console.log(barss)
-            // barOneStyle.backgroundColor = 'pink'
         }
-        }, i * 20);
+        }, i * 10);
       }
-      // figure out how to put sorted values in purple 
-
-      // check if all is sorted then change colors of "color-block" to one color to show that evrything is correct
-
-      
     }
   }
 
 
   const mappedArray = arr.map((num, i) => {
-    return <div className='wrapper-forall'><div className='color-block' style={{height: `${num * 4}px`}}></div></div>
+    return <div className='wrapper-forall'><div className='color-block' style={{height: `${num * 3}px`}}></div></div>
   })
+
+  // 10 entires, 50px wide, 150ms speed    
+  // 25 entries, 25px wide, 100ms speed
+  // 50 entries, 15px wide, 50ms speed
+  // 100 entries, 8px wide, 30ms speed
+  // 175 entries, 4px wide, 10ms speed
+  
+    // if value is 1 = 10 entires, 50px wide, 150ms speed    
+    // if value is 2 = 25 entries, 25px wide, 100ms speed
+    // if value is 3 = 50 entries, 15px wide, 50ms speed
+    // if value is 4 = 100 entries, 8px wide, 30ms speed
+    // if value is 5 = 175 entries, 4px wide, 10ms speed
 
   return (
     <>
@@ -108,14 +108,49 @@ const SortGraph = () => {
             {mappedArray}
           </div>
 
-          <div className='button-wrapper'>
-            <button onClick={resetArray}>new array</button>
-          </div>
-          <div className='all-buttons-wrapper'>
-            <button className='btn-sort' onClick={MergeSortRun}>Merge Sort</button>
-            <button className='btn-sort'>Quick Sort</button>
-            <button className='btn-sort'>Heap Sort</button>
-            <button className='btn-sort'>Bubble Sort</button>
+            <div className='wrapper-bottom-section'>
+              <div className='btn-and-slider-wrapper'>
+                <div className='button-wrapper'>
+                  <button className='btn-newarr' onClick={resetArray}>Generate array</button>
+              </div>
+
+              <div>
+                <Box sx={{ width: 100 }}>
+                  <SpeedSlider
+                    aria-label="Temperature"
+                    defaultValue={3}
+                    // getAriaValueText={valuetext}
+                    // valueLabelDisplay="auto"
+                    // aria-label="Restricted values"
+                    // defaultValue={20}
+                    // valueLabelFormat={valueLabelFormat}
+                    // getAriaValueText={valuetext}
+                    // step={null}
+                    // valueLabelDisplay="auto"
+                    marks
+                    min={1}
+                    max={5}
+                    onChange={(value) => console.log(value.target)}
+                  />
+
+                {/* <Slider
+                  aria-label="Custom marks"
+                  defaultValue={20}
+                  getAriaValueText={valuetext}
+                  step={null}
+                  valueLabelDisplay="auto"
+                  marks={marks}
+                /> */}
+              </Box>
+              </div>
+            </div>
+            
+            <div className='all-buttons-wrapper'>
+              <button className='btn-sort btn-newarr' onClick={MergeSortRun}>Merge Sort</button>
+              <button className='btn-sort'>Quick Sort</button>
+              <button className='btn-sort'>Heap Sort</button>
+              <button className='btn-sort'>Bubble Sort</button>
+            </div>
           </div>
         </div>
       </div>
@@ -133,3 +168,6 @@ const getRandomNumber = (min, max) => {
 
 
 // disable button while the animation is going 
+
+// timer 
+// Big o times 

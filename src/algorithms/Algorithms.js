@@ -75,28 +75,28 @@ const doMerge = (mainArray, left, center, right, cloneArr, animations) => {
 // this is a great solution but you cannot track animation history with this algorithm
 // #################################
 
-// const mergeSort = (arr) => {
-// 	if (arr.length === 1) {
-// 		return arr;
-// 	}
+const mergeSort = (arr) => {
+	if (arr.length === 1) {
+		return arr;
+	}
 
-// 	const center = Math.floor(arr.length / 2);
-// 	const left = arr.slice(0, center);
-// 	const right = arr.slice(center);
+	const center = Math.floor(arr.length / 2);
+	const left = arr.slice(0, center);
+	const right = arr.slice(center);
 
-// 	return merge(mergeSort(left), mergeSort(right));
-// };
+	return merge(mergeSort(left), mergeSort(right));
+};
 
-// const merge = (left, right) => {
-// 	const results = [];
+const merge = (left, right) => {
+	const results = [];
 
-// 	while (left.length && right.length) {
-// 		if (left[0] < right[0]) {
-// 			results.push(left.shift());
-// 		} else {
-// 			results.push(right.shift());
-// 		}
-// 	}
+	while (left.length && right.length) {
+		if (left[0] < right[0]) {
+			results.push(left.shift());
+		} else {
+			results.push(right.shift());
+		}
+	}
 
-// 	return [ ...results, ...left, ...right ];
-// };
+	return [ ...results, ...left, ...right ];
+};

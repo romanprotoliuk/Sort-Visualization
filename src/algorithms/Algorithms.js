@@ -70,8 +70,11 @@ const doMerge = (mainArray, left, center, right, cloneArr, animations) => {
 	}
 };
 
+// #################################
 // first unsuccessful implementation for merge sort
 // this is a great solution but you cannot track animation history with this algorithm
+// #################################
+
 // const mergeSort = (arr) => {
 // 	if (arr.length === 1) {
 // 		return arr;

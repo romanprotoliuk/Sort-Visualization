@@ -14,6 +14,11 @@ const SortGraph = () => {
   const resetArray = () => {
     const array = []
     
+    const barss = document.querySelectorAll('.color-block')
+    barss.forEach((bar) => {
+      bar.style.backgroundColor = 'cadetblue'
+    })
+
     for (let i = 0; i< 50; i++) {
       array.push(getRandomNumber(5, 100))
     }
@@ -22,36 +27,67 @@ const SortGraph = () => {
   
 
   const MergeSortRun = () => {
+    // this gives us history of animations 
+    // [ [[0,1],[0,1] ...], [[0,1],[0,1] ...], [[0,1],[0,1] ...]]
+    // first number represents the before index the second swap index
     const animations = algorithms.MergeSort(arr);
-    console.log(animations)
+    // console.log(animations)
     for (let i = 0; i < animations.length; i++) {
+      console.log(animations[i])
       const arrayBars = document.getElementsByClassName('color-block');
       // here we are dealing with a value change
+      // every three value we have a new start of a new animation 
       const isColorChange = i % 3 !== 2;
       if (isColorChange) {
+        
+        // desctructuring of animation history
         const [barOneIdx, barTwoIdx] = animations[i];
-        console.log('this is animations', animations)
+
+        // aplying styles to each bar inside the graph
         const barOneStyle = arrayBars[barOneIdx].style;
         const barTwoStyle = arrayBars[barTwoIdx].style;
+        
+        // if we are the first of the triplet value change the color to red 
+        // if its the second value change it to cadetblue
         const color = i % 3 === 0 ? 'red' : 'cadetblue'
         setTimeout(() => {
-          // console.log('animations[i]', animations[i])
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
-          // const [barOneIdx, newHeight] = animations[i];
-          // document.getElementById("num").innerHTML = `${newHeight}`;
-        }, i * 30);
+          // setTimeout(() => {
+          //   barOneStyle.backgroundColor = 'blue'
+          // }, i * 5)
+        //   if(animations.length - 1 === i) {
+        //     console.log('loop ends');
+        //     barOneStyle.backgroundColor = 'pink'
+        // }
+        }, i * 20);
       } else {
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
           barOneStyle.height = `${newHeight * 4}px`;
-          // document.getElementById("num").innerHTML = `${newHeight}`;
-        }, i * 30);
+          // barOneStyle.backgroundColor = 'cadetblue'
+          
+          // setTimeout(() => {
+          //   barOneStyle.backgroundColor = 'blue'
+          // }, i * 5)
+          if(animations.length - 1 === i) {
+            console.log('loop ends');
+            const barss = document.querySelectorAll('.color-block')
+            console.log(barss)
+            barss.forEach((bar) => {
+              bar.style.backgroundColor = 'orange'
+            })
+            console.log(barss)
+            // barOneStyle.backgroundColor = 'pink'
+        }
+        }, i * 20);
       }
       // figure out how to put sorted values in purple 
 
       // check if all is sorted then change colors of "color-block" to one color to show that evrything is correct
+
+      
     }
   }
 

@@ -52,7 +52,7 @@
   width: 10px;
   background-color: cadetblue;
   /* transition: all .4s ease-in; */
-  transition: .1s;
+  transition: .05s;
 }
 
 .numbers {

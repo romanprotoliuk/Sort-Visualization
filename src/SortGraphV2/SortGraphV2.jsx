@@ -9,6 +9,43 @@ import Slider from '@mui/material/Slider';
 const SortGraph = () => {
   
   const [arr, setArr] = useState([])
+  const [sliderValue, setSlideValue] = useState(3)
+  const [valueMatrices, setValueMatrices] = useState({
+    entries: 50,
+    width: 15,
+    speed: 50,
+  })
+
+
+
+  const valueSetter = (target) => {
+    setSlideValue(target)
+
+    changeGraph()
+    resetArray()
+  }
+
+  const changeGraph = () => {
+    switch (sliderValue) {
+      case 1:
+        return setValueMatrices({ entries: 10, width: 50, speed: 150 })
+      case 2:
+        return setValueMatrices({ entries: 25, width: 25, speed: 100 })
+      case 3:
+        return setValueMatrices({ entries: 50, width: 15, speed: 50 })
+      case 4:
+        return setValueMatrices({ entries: 100, width: 8, speed: 30 })
+      case 5:
+        return setValueMatrices({entries: 175, width: 4, speed: 10})
+    }
+  }
+  console.log(valueMatrices)
+
+  // 10 entires, 50px wide, 150ms speed    
+  // 25 entries, 25px wide, 100ms speed
+  // 50 entries, 15px wide, 50ms speed
+  // 100 entries, 8px wide, 30ms speed
+  // 175 entries, 4px wide, 10ms speed
 
   useEffect(() => {
     resetArray()
@@ -18,23 +55,17 @@ const SortGraph = () => {
     const array = []
     
     const barss = document.querySelectorAll('.color-block')
+    
     barss.forEach((bar) => {
       bar.style.backgroundColor = 'cadetblue'
     })
 
-    for (let i = 0; i< 175; i++) {
+    for (let i = 0; i< valueMatrices.entries; i++) {
       array.push(getRandomNumber(5, 125))
     }
     setArr(array)
   } 
   
-  // 10 entires, 50px wide, 150ms speed    
-  // 25 entries, 25px wide, 100ms speed
-  // 50 entries, 15px wide, 50ms speed
-  // 100 entries, 8px wide, 30ms speed
-  // 175 entries, 4px wide, 10ms speed
-
-
   const MergeSortRun = () => {
     // this gives us history of animations 
     // [ [[0,1],[0,1] ...], [[0,1],[0,1] ...], [[0,1],[0,1] ...]]
@@ -61,12 +92,14 @@ const SortGraph = () => {
         setTimeout(() => {
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
-        }, i * 10);
+        }, i * valueMatrices.speed);
       } else {
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
-          barOneStyle.height = `${newHeight * 3}px`;
+          // const bartwoStyleUpdated = arrayBars[newHeight].style;
+          // bartwoStyleUpdated.backgroundColor = 'green'
+          barOneStyle.height = `${newHeight * 3.5}px`;
           if(animations.length - 1 === i) {
             // console.log('loop ends');
             const barss = document.querySelectorAll('.color-block')
@@ -74,14 +107,16 @@ const SortGraph = () => {
               bar.style.backgroundColor = 'orange'
             })
         }
-        }, i * 10);
+        }, i * valueMatrices.speed);
       }
     }
   }
 
 
+  
+
   const mappedArray = arr.map((num, i) => {
-    return <div className='wrapper-forall'><div className='color-block' style={{height: `${num * 3}px`}}></div></div>
+    return <div className='wrapper-forall'><div className='color-block' style={{height: `${num * 3.5}px`, width: valueMatrices.width }}></div></div>
   })
 
   // 10 entires, 50px wide, 150ms speed    
@@ -119,37 +154,25 @@ const SortGraph = () => {
                   <SpeedSlider
                     aria-label="Temperature"
                     defaultValue={3}
-                    // getAriaValueText={valuetext}
-                    // valueLabelDisplay="auto"
-                    // aria-label="Restricted values"
-                    // defaultValue={20}
-                    // valueLabelFormat={valueLabelFormat}
-                    // getAriaValueText={valuetext}
-                    // step={null}
-                    // valueLabelDisplay="auto"
                     marks
+                    // step={1}
                     min={1}
                     max={5}
-                    onChange={(value) => console.log(value.target)}
+                    
+                    onChange={(value) => valueSetter(value.target.value)}
+                    // onChange={(value) => setSlideValue(value.target.value)}
                   />
-
-                {/* <Slider
-                  aria-label="Custom marks"
-                  defaultValue={20}
-                  getAriaValueText={valuetext}
-                  step={null}
-                  valueLabelDisplay="auto"
-                  marks={marks}
-                /> */}
               </Box>
               </div>
             </div>
             
             <div className='all-buttons-wrapper'>
+              {sliderValue}
               <button className='btn-sort btn-newarr' onClick={MergeSortRun}>Merge Sort</button>
-              <button className='btn-sort'>Quick Sort</button>
+              <button onClick={changeGraph}>click</button>
+              {/* <button className='btn-sort'>Quick Sort</button>
               <button className='btn-sort'>Heap Sort</button>
-              <button className='btn-sort'>Bubble Sort</button>
+              <button className='btn-sort'>Bubble Sort</button> */}
             </div>
           </div>
         </div>
@@ -160,8 +183,6 @@ const SortGraph = () => {
 
 export default SortGraph
 
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-// function for random number generater
 const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -171,3 +192,5 @@ const getRandomNumber = (min, max) => {
 
 // timer 
 // Big o times 
+
+// disable buttons on merge sort

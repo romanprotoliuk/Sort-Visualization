@@ -71,6 +71,7 @@
 }
 
 .btn-and-slider-wrapper {
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -78,15 +79,20 @@
 
 .size-wrapper {
   margin-right: 20px;
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
 }
 
 .speed-wrapper {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
+}
+
+.speed-wrapper:not(:last-child) {
+  margin-right: 30px;
 }
 
 .h4-size {
@@ -97,6 +103,7 @@
 
 .h4-speed {
   margin-right: 10px;
+  padding-bottom: 4.5px;
 }
 
 .btn-run {
@@ -109,4 +116,33 @@
   margin-left: 20px;
   padding: 15px 20px;
   background-color: khaki;
+}
+
+.two-button-wrapper {
+  display: flex;
+}
+
+textarea {
+  width: 100%;
+}
+
+.modal-btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-custom-arr {
+  margin-top: 20px;
+  padding: 15px 20px;
+  background-color: khaki;
+}
+
+.btn-choice-wrapper {
+  padding: 10px 15px;
+  border-radius: 10%;
+  background-color: brown;
+}
+
+.btn-choice-wrapper:not(:last-child) {
+  margin-right: 10px;
 }

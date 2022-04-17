@@ -1,6 +1,6 @@
 .App {
   height: 100vh;
-  text-align: center;
+  /* text-align: center; */
   display: flex;
   justify-content: center;
   align-content: center;
@@ -40,3 +40,4 @@
     transform: rotate(360deg);
   }
 }
+

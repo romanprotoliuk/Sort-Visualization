@@ -7,22 +7,22 @@ import Slider from '@mui/material/Slider';
 
 
 const SortGraph = () => {
-  
   const [arr, setArr] = useState([])
   const [sliderValue, setSlideValue] = useState(3)
+  const [buttonClicked, setButtonClicked] = useState(false)
   const [valueMatrices, setValueMatrices] = useState({
     entries: 50,
     width: 15,
     speed: 50,
   })
 
-
-
   const valueSetter = (target) => {
-    setSlideValue(target)
-
-    changeGraph()
-    resetArray()
+    console.log(target)
+    if (target >= 1 && target <= 5) {
+      setSlideValue(target)
+      changeGraph()
+      resetArray()
+    }
   }
 
   const changeGraph = () => {
@@ -41,21 +41,18 @@ const SortGraph = () => {
   }
   console.log(valueMatrices)
 
-  // 10 entires, 50px wide, 150ms speed    
-  // 25 entries, 25px wide, 100ms speed
-  // 50 entries, 15px wide, 50ms speed
-  // 100 entries, 8px wide, 30ms speed
-  // 175 entries, 4px wide, 10ms speed
-
   useEffect(() => {
     resetArray()
   }, [])
   
+  const resetArrayAndSetState = () => {
+    MergeSortRun()
+    // setButtonClicked(true)
+  }
+
   const resetArray = () => {
     const array = []
-    
     const barss = document.querySelectorAll('.color-block')
-    
     barss.forEach((bar) => {
       bar.style.backgroundColor = 'cadetblue'
     })
@@ -65,8 +62,11 @@ const SortGraph = () => {
     }
     setArr(array)
   } 
+  console.log(buttonClicked)
   
   const MergeSortRun = () => {
+    
+    console.log('from inside', buttonClicked)
     // this gives us history of animations 
     // [ [[0,1],[0,1] ...], [[0,1],[0,1] ...], [[0,1],[0,1] ...]]
     // first number represents the before index the second overwritten index
@@ -102,34 +102,38 @@ const SortGraph = () => {
           barOneStyle.height = `${newHeight * 3.5}px`;
           if(animations.length - 1 === i) {
             // console.log('loop ends');
+            // setButtonClicked(false)
             const barss = document.querySelectorAll('.color-block')
             barss.forEach((bar) => {
               bar.style.backgroundColor = 'orange'
             })
+            
         }
         }, i * valueMatrices.speed);
       }
+      // if (animations.length - 1 === i) {
+      //   setButtonClicked(false)
+      // }
+      // setButtonClicked(true)
     }
   }
 
-
-  
+  const handleChange = (event) => {
+    console.log(event.target.value)
+    // console.log(target)
+    if (event.target.value >= 1 && event.target.value <= 5) {
+      setSlideValue(event.target.value)
+      changeGraph()
+      resetArray()
+    }
+  }
 
   const mappedArray = arr.map((num, i) => {
     return <div className='wrapper-forall'><div className='color-block' style={{height: `${num * 3.5}px`, width: valueMatrices.width }}></div></div>
   })
 
-  // 10 entires, 50px wide, 150ms speed    
-  // 25 entries, 25px wide, 100ms speed
-  // 50 entries, 15px wide, 50ms speed
-  // 100 entries, 8px wide, 30ms speed
-  // 175 entries, 4px wide, 10ms speed
-  
-    // if value is 1 = 10 entires, 50px wide, 150ms speed    
-    // if value is 2 = 25 entries, 25px wide, 100ms speed
-    // if value is 3 = 50 entries, 15px wide, 50ms speed
-    // if value is 4 = 100 entries, 8px wide, 30ms speed
-    // if value is 5 = 175 entries, 4px wide, 10ms speed
+
+  const rangeSliderBtn = buttonClicked ? <SpeedSlider aria-label="Temperature" defaultValue={3} marks min={1} max={5} disabled onChange={(value) => valueSetter(value.target.value)}/> : <SpeedSlider aria-label="Temperature" defaultValue={3} marks min={1} max={5} onChange={handleChange} />
 
   return (
     <>
@@ -137,6 +141,7 @@ const SortGraph = () => {
         <div className='visualizer-wrapper'>
           <div className='header-wrapper'> 
             <h2>This will be space for sort graph visualizer</h2>
+            <code>hey this is codes for(let i = 0)</code>
           </div>
           
           <div className='bars-wrapper'>
@@ -151,25 +156,14 @@ const SortGraph = () => {
 
               <div>
                 <Box sx={{ width: 100 }}>
-                  <SpeedSlider
-                    aria-label="Temperature"
-                    defaultValue={3}
-                    marks
-                    // step={1}
-                    min={1}
-                    max={5}
-                    
-                    onChange={(value) => valueSetter(value.target.value)}
-                    // onChange={(value) => setSlideValue(value.target.value)}
-                  />
-              </Box>
+                  {rangeSliderBtn}
+                </Box>
               </div>
             </div>
             
             <div className='all-buttons-wrapper'>
-              {sliderValue}
-              <button className='btn-sort btn-newarr' onClick={MergeSortRun}>Merge Sort</button>
-              <button onClick={changeGraph}>click</button>
+              {/* {sliderValue} */}
+              <button className='btn-sort btn-newarr' onClick={resetArrayAndSetState}>Merge Sort</button>
               {/* <button className='btn-sort'>Quick Sort</button>
               <button className='btn-sort'>Heap Sort</button>
               <button className='btn-sort'>Bubble Sort</button> */}
@@ -189,8 +183,6 @@ const getRandomNumber = (min, max) => {
 
 
 // disable button while the animation is going 
-
-// timer 
-// Big o times 
-
 // disable buttons on merge sort
+
+// reload page 

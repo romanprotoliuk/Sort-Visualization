@@ -7,8 +7,8 @@ const App = () => {
   return (
     <div className="App">
       {/* <SortGraph></SortGraph> */}
-      <SortGraphV2></SortGraphV2>
-      {/* <Body /> */}
+      {/* <SortGraphV2></SortGraphV2> */}
+      <Body />
     </div>
   )
 } 

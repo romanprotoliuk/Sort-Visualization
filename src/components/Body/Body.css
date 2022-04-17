@@ -1,6 +1,6 @@
 * {
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
   font-size: 11px;
 }
 
@@ -21,6 +21,7 @@
 .graph-wrapper {
   background-color: white;
   width: 70%;
+  /* padding: 0px 10px; */
 }
 
 .controll-bar {
@@ -37,110 +38,25 @@
   font-size: 20px;
 }
 
-
-/* .gutter {
-  width: 10%;
+.visualizer-space {
+  /* margin: auto 0; */
   height: 100%;
-  background-color: #2f3129;
-} */
-
-
-/* .code-space {
   width: 100%;
-  height: 100%;
-  background-color: #1e1e1e;
-} */
-
-
-
-/* span.gutter-new {
-  padding: 0 20px;
-  margin-right: 10px;
-  background-color: #2f3129;
-  font-size: 10px;
-  color: #dee0d773;
-}
-
-pre {
-  margin: 0;
-} */
-
-/* .code-line-wrapper {
-  margin-top: 20px;
-  margin-left: 20px;
+  background-color: bisque;
   display: flex;
-  justify-content: flex-start;
-} */
-
-/* .code-line-wrapper-next {
-  margin-left: 20px;
-  margin-top: 3px;
-} */
-
-/* .function {
-  color: #1b5ee4;
+  align-items: flex-end;
 }
 
-.function-name {
-  color: #dcb962;
+.bar {
+  width: 100%;
+  background-color: aqua;
+  height: 60%;
+  
 }
 
-.variable {
-  color: #4fbeffbb;
+.bar:not(:first-child):not(:last-child) {
+  margin: 0 1.5px;
 }
-
-.conditions {
-  margin-left: 20px;
-  color: #c586c0;
-}
-
-.spacein {
-  margin-left: 40px;
-  color: #c586c0;
-}
-
-.numbers-code {
-  color: #7cb561;
-}
-
-.variable-name {
-  color: #4fc1ff;
-} */
-
-/* .token * {
-  font-size: 10px;
-} */
-
-/* .react-syntax-highlighter-line-number {
-  font-size: 12px;
-} */
-
-/* span.text-sm {
-  font-size: 11px;
-  font-weight: 600;
-} */
-
-/* .list-reset {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
-/* .block {
-  display: flex;
-  align-items: center;
-  align-content: center;
-  align-self: center;
-} */
-
-/* .roman {
-  display: flex;
-  align-content: center;
-}
-
-.wrapper-show-numbers {
-  align-items: center;
-} */
 
 
 

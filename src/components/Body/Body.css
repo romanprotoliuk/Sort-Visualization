@@ -27,6 +27,8 @@
 .controll-bar {
   height: 8vh;
   background-color: blueviolet;
+  display: flex;
+  /* justify-content: space-between; */
 }
 
 .left-side-wrapper {
@@ -55,8 +57,56 @@
 }
 
 .bar:not(:first-child):not(:last-child) {
-  margin: 0 1.5px;
+  margin: 0 1px;
 }
 
+.wrapper-bottom-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;  
+}
 
+.slider-wrapper {
+  display: flex;
+}
 
+.btn-and-slider-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.size-wrapper {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.speed-wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.h4-size {
+  padding-right: 10px;
+  
+  margin: auto;
+}
+
+.h4-speed {
+  margin-right: 10px;
+}
+
+.btn-run {
+  margin-right: 20px;
+  padding: 15px 20px;
+  background-color: khaki;
+}
+
+.btn-generatenew {
+  margin-left: 20px;
+  padding: 15px 20px;
+  background-color: khaki;
+}

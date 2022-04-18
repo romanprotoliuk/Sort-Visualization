@@ -1,18 +1,13 @@
 import './Body.css'
 import CodeBlock from '../CodeBlock/CodeBlock'
-import SortGraphV3 from '../../SortGraphV3/SortGraphV3'
 import { useState, useEffect } from 'react'
 import Box from '@mui/material/Box';
 import * as algorithms from '../../algorithms/Algorithms'
 import { SpeedSlider } from '../SpeedSlider';
-import { PrettoSlider } from '../SpeedSlider2';
 import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
-
 const style = {
   position: 'absolute',
   top: '50%',
@@ -120,8 +115,6 @@ const Body = () => {
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
-          // const bartwoStyleUpdated = arrayBars[newHeight].style;
-          // bartwoStyleUpdated.backgroundColor = 'green'
           barOneStyle.height = `${newHeight}%`;
           if(animations.length - 1 === i) {
             const barss = document.querySelectorAll('.bar')
@@ -150,9 +143,9 @@ const Body = () => {
   }, [])
 
   const handleOnCickFold = () => {
-    console.log('clicked')
+    // console.log('clicked')
     setOpenSide(!openSide)
-    console.log(openSide)
+    // console.log(openSide)
     const leftSide = document.querySelector('.left-side-wrapper');
     const rightSide = document.querySelector('.graph-wrapper');
 

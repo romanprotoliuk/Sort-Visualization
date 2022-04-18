@@ -10,7 +10,9 @@ export const MergeSort = (arr) => {
 const mergeSortHelper = (arr, left, right, cloneArr, animations) => {
 	if (left === right) return;
 	const center = Math.floor((left + right) / 2);
+	// passing left array
 	mergeSortHelper(cloneArr, left, center, arr, animations);
+	// passing right array
 	mergeSortHelper(cloneArr, center + 1, right, arr, animations);
 	doMerge(arr, left, center, right, cloneArr, animations);
 };

@@ -5,7 +5,7 @@ const iOSBoxShadow =
   '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)';
 
 export const SpeedSlider = styled(Slider)(({ theme }) => ({
-    color: theme.palette.mode === 'dark' ? '#3880ff' : '#3880ff',
+    color: theme.palette.mode === 'dark' ? '#9198e5' : '#9198e5',
     height: 3,
     padding: '10px 0',
     '& .MuiSlider-thumb': {

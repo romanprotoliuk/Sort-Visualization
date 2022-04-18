@@ -1,7 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+
 * {
   /* margin: 0;
   padding: 0; */
   font-size: 11px;
+}
+
+.main-title-home {
+  font-weight: 600;
+}
+
+.MuiTypography-root {
+  font-family: 'Open Sans' sans-serif;
 }
 
 .body-wrapper {
@@ -14,7 +24,7 @@
 .left-side-wrapper {
   
   display: flex;
-  background-color: #f3eaea;
+  background-color: white;
   width: 30%;
 }
 
@@ -26,7 +36,8 @@
 
 .controll-bar {
   height: 8vh;
-  background-color: blueviolet;
+  background: linear-gradient(200deg, #e66465);
+  background-color: #e66464b9;
   display: flex;
   /* justify-content: space-between; */
 }
@@ -47,16 +58,15 @@
   /* margin: auto 0; */
   height: 100%;
   width: 100%;
-  background-color: bisque;
+  background-color: #0058b727;
   display: flex;
   align-items: flex-end;
 }
 
 .bar {
   width: 100%;
-  background-color: aqua;
+  background-color: #9198e5;
   height: 60%;
-  
 }
 
 .bar:not(:first-child):not(:last-child) {
@@ -100,9 +110,12 @@
 
 .h4-size {
   padding-right: 10px;
-  padding-bottom: 5px;
+  padding-bottom: 4px;
   margin: auto;
+  color: white;
   font-size: 12;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
 .h4-speed {
@@ -113,13 +126,35 @@
 .btn-run {
   margin-right: 20px;
   padding: 15px 20px;
-  background-color: khaki;
+  background-color: white;
+  color: #9198e5;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 7px;
+  font-weight: 600;
 }
 
 .btn-generatenew {
-  margin-left: 20px;
+  width: 100%;
+  /* margin-left: 20px; */
   padding: 15px 20px;
-  background-color: khaki;
+  background-color: white;
+  border-radius: 7px;
+  color:  #9198e5;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.btn-details {
+  width: 100%;
+  /* margin-left: 20px; */
+  padding: 20px 20px;
+  background-color: white;
+  background: #9198e5;
+  color:  white;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 7px;
 }
 
 .two-button-wrapper {
@@ -168,8 +203,16 @@ textarea {
   right: -12%;
   bottom: 0%; */
   padding: 15px;
-  background-color: #f3eaea;
+  background-color: white;
   z-index: 1;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 7px 7px 0px;
   cursor: pointer;
+}
+
+.button-wrapper {
+  padding: 1rem;
+}
+
+.box-img {
+  padding-top: 20px;
 }

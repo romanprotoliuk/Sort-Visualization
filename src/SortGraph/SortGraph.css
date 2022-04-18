@@ -1,11 +1,11 @@
 .visualizer-space {
-  margin: auto 0;
+  /* margin: auto 0;
   height: 80%;
-  width: 80%;
+  width: 80%; */
   /* display: flex;
   justify-content: center;
   align-content: center; */
-  background-color: bisque;
+  /* background-color: bisque; */
 }
 
 .visualizer-wrapper {

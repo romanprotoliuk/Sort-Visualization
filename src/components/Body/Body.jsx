@@ -18,9 +18,9 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 500,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  // border: '2px solid #000',
   boxShadow: 24,
   p: 4,
 };
@@ -35,6 +35,7 @@ const Body = () => {
   const [sliderValue, setSlideValue] = useState(3)
   const [buttonClicked, setButtonClicked] = useState(false)
   const [openSide, setOpenSide] = useState(true) 
+  const [runpressed, setRunPressed] = useState(false)
   const [valueMatrices, setValueMatrices] = useState({
     entries: 50,
     speed: 50,
@@ -80,7 +81,7 @@ const Body = () => {
 
     const barss = document.querySelectorAll('.bar')
     barss.forEach((bar) => {
-      bar.style.backgroundColor = 'cadetblue'
+      bar.style.backgroundColor = '#9198e5'
     })
     for (let i = 0; i< valueMatrices.entries; i++) {
       array.push(getRandomNumber(1, 99))
@@ -110,7 +111,7 @@ const Body = () => {
         
         // if we are the first of the triplet value change the color to red 
         // if its the second value change it to cadetblue
-        const color = i % 3 === 0 ? 'red' : 'cadetblue'
+        const color = i % 3 === 0 ? '#e66465' : '#9198e5'
         setTimeout(() => {
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
@@ -125,7 +126,7 @@ const Body = () => {
           if(animations.length - 1 === i) {
             const barss = document.querySelectorAll('.bar')
             barss.forEach((bar) => {
-              bar.style.backgroundColor = 'orange'
+              bar.style.backgroundColor = 'rgb(80, 250, 123)'
             })
           }
         }, i * valueMatrices.speed);
@@ -184,12 +185,15 @@ const Body = () => {
          
           <div className='left-side-wrapper'>
             <div className='title-wrapper'>
-              <h1>Merge Sort Algorithm</h1>
+              <h1 className='main-title-home'>Merge Sort Algorithm</h1>
             </div>
             <CodeBlock />
             <div onClick={handleOnCickFold} className='wapper-for-side-btn'>
               <img className='side-bar-btn' src="expand-sidebara.png" alt="side bar image" />
             </div>
+              <div className='button-wrapper'>
+                <button className='btn-details' onClick={handleOpen}>More information</button>
+              </div>
           </div>
 
           <div className='graph-wrapper'>
@@ -208,9 +212,6 @@ const Body = () => {
                 <div className='button-wrapper'>
                     <button className='btn-generatenew' onClick={resetArray}>Generate Array</button>
                   </div>
-                  {/* <div className='button-wrapper'>
-                    <button className='btn-generatenew' onClick={handleOpen}>Custom Array</button>
-                  </div> */}
               </div>
 
               <div className='slider-wrapper'>
@@ -246,24 +247,22 @@ const Body = () => {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
-              Enter Custom Array
-            </Typography>
-            {/* <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            {/* <Typography id="transition-modal-title" align='center' variant="h4" component="h2">
+              Merge Sort
             </Typography> */}
+            <Typography id="transition-modal-description" variant='h5' sx={{ mt: 0 }}>
+              Merge Sort is a Divide and Conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves.
+            </Typography>
+            <Typography id="transition-modal-description" variant='h5' sx={{ mt: 2 }}>
+              Merge Sort has worst case run time of <code>n*log(n)</code> 
+              </Typography>
+              <div className='box-img'>
+                <img src="merge.PNG" alt="merge picture" />
+              </div>
             
             {/* validate numbers */}
-            <TextareaAutosize
-              id='textarea-custom'  
-              aria-label="minimum height"
-              minRows={3}
-              placeholder="1,5,6,2,3"
-              style={{ width: '100%', marginTop: '20px', border: '1px solid #d9d9d9', padding: '4px 11px' }}
-            />  
-            <div className='modal-btn-wrapper'>
-              <button className='btn-custom-arr' onClick={resetArrayAndSetState}>Generate</button>
-            </div>  
+             
+              
           </Box>
         </Fade>
       </Modal>

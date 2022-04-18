@@ -208,9 +208,9 @@ const Body = () => {
                 <div className='button-wrapper'>
                     <button className='btn-generatenew' onClick={resetArray}>Generate Array</button>
                   </div>
-                  <div className='button-wrapper'>
+                  {/* <div className='button-wrapper'>
                     <button className='btn-generatenew' onClick={handleOpen}>Custom Array</button>
-                  </div>
+                  </div> */}
               </div>
 
               <div className='slider-wrapper'>

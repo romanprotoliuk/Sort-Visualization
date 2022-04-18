@@ -34,63 +34,43 @@ const Body = () => {
   const [arr, setArr] = useState([])
   const [sliderValue, setSlideValue] = useState(3)
   const [buttonClicked, setButtonClicked] = useState(false)
+  const [openSide, setOpenSide] = useState(true) 
   const [valueMatrices, setValueMatrices] = useState({
-    entries: 50
+    entries: 50,
+    speed: 50,
   })
   
 
-
-  // const sizeChange = (event) => {
-  //   console.log(event.target.innerText)
-  //   let num = parseInt(event.target.innerText)
-  //   setSlideValue({ entries:  num})
-  //   changeGraph()
-  //     resetArray()
-  // }
-
-  const sizeChange = () => {
-    setValueMatrices({ entries: 10 })
-    console.log(valueMatrices)
-    changeGraph()
-      resetArray()
-  }
-
-  const sizeChangeTwo = () => {
-    setValueMatrices({ entries: 10 })
-    console.log(valueMatrices)
-    changeGraph()
-      resetArray()
-  }
-
   const valueSetter = (target) => {
-    console.log(target)
     if (target >= 1 && target <= 5) {
       setSlideValue(target)
       changeGraph()
       resetArray()
+      console.log('speed', valueMatrices)
     }
   }
 
   const changeGraph = () => {
     switch (sliderValue) {
-      case 10:
-        return setValueMatrices({ entries: 10})
-      case 25:
-        return setValueMatrices({ entries: 25})
-      case 50:
-        return setValueMatrices({ entries: 50})
-      case 100:
-        return setValueMatrices({ entries: 100})
-      case 200:
-        return setValueMatrices({entries: 175})
+      case 1:
+        return setValueMatrices({ entries: 10, speed: 300 })
+      case 2:
+        return setValueMatrices({ entries: 25, speed: 100 })
+      case 3:
+        return setValueMatrices({ entries: 50, speed: 50 })
+      case 4:
+        return setValueMatrices({ entries: 100, speed: 30 })
+      case 5:
+        return setValueMatrices({entries: 175, speed: 10})
     }
   }
 
-  useEffect(() => {
-    resetArray()
-  }, [])
+  // useEffect(() => {
+  //   setValueMatrices(valueMatrices)
+  // }, [valueMatrices])
   
   const resetArrayAndSetState = () => {
+    console.log('reset', valueMatrices)
     MergeSortRun()
     // setButtonClicked(true)
   }
@@ -134,7 +114,7 @@ const Body = () => {
         setTimeout(() => {
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
-        }, i * 40);
+        }, i * valueMatrices.speed);
       } else {
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
@@ -148,22 +128,48 @@ const Body = () => {
               bar.style.backgroundColor = 'orange'
             })
           }
-        }, i * 40);
+        }, i * valueMatrices.speed);
       }
     }
   }
 
-  const handleChange = () => {
+  const handleChange = (event) => {
+    console.log(event.target.value)
+    // console.log(target)
+    if (event.target.value >= 1 && event.target.value <= 5) {
+      setSlideValue(event.target.value)
+      console.log(valueMatrices)
       changeGraph()
       resetArray()
-
+    }
   }
 
   useEffect(() => {
     resetArray()
   }, [])
 
-  
+  const handleOnCickFold = () => {
+    console.log('clicked')
+    setOpenSide(!openSide)
+    console.log(openSide)
+    const leftSide = document.querySelector('.left-side-wrapper');
+    const rightSide = document.querySelector('.graph-wrapper');
+
+    if (!openSide) {
+      // left side wrapper width to 1%
+      leftSide.style.position = 'absolute'
+      leftSide.style.left = '-30%'
+      rightSide.style.width = '100%'
+      console.log(leftSide)
+      // graph-wrapper width to 99%
+    } else {
+      leftSide.style.position = 'relative'
+      leftSide.style.width = '30%'
+      leftSide.style.left = '0%'
+      rightSide.style.width = '70%'
+    }
+
+  }
 
   const rangeSliderBtn = buttonClicked ? <SpeedSlider aria-label="Temperature" defaultValue={3} marks min={1} max={5} disabled onChange={(value) => valueSetter(value.target.value)}/> : <SpeedSlider aria-label="Temperature" defaultValue={3} marks min={1} max={5} onChange={handleChange} />
 
@@ -181,6 +187,9 @@ const Body = () => {
               <h1>Merge Sort Algorithm</h1>
             </div>
             <CodeBlock />
+            <div onClick={handleOnCickFold} className='wapper-for-side-btn'>
+              <img className='side-bar-btn' src="expand-sidebara.png" alt="side bar image" />
+            </div>
           </div>
 
           <div className='graph-wrapper'>
@@ -205,52 +214,10 @@ const Body = () => {
               </div>
 
               <div className='slider-wrapper'>
-                {/* <div className='size-wrapper'>
-                  <h4 className='h4-size'>size</h4>
+                <div className='size-wrapper'>
+                  <h4 className='h4-size'>size & speed</h4>
                   <Box sx={{ width: 100 }}>
                     {rangeSliderBtn}
-                  </Box>
-                </div> */}
-
-                <div className='speed-wrapper'>
-                  <h4 className='h4-speed'>size</h4>
-                  <div className='btn-choice-wrapper'>
-                    <button  onClick={function() { setValueMatrices({entries: 10}, handleChange())}} className='size-btn-choice'>10</button>
-                  </div>
-                  <div className='btn-choice-wrapper'>
-                    <button onClick={sizeChange} className='size-btn-choice'>25</button>
-                  </div>
-                  <div className='btn-choice-wrapper'>
-                    <button onClick={sizeChange} className='size-btn-choice'>50</button>
-                  </div>
-                  <div className='btn-choice-wrapper'>
-                    <button onClick={sizeChange} className='size-btn-choice'>100</button>
-                  </div>
-                  <div className='btn-choice-wrapper'>
-                    <button onClick={sizeChange} className='size-btn-choice'>200</button>
-                  </div>
-                  {/* <Box sx={{ width: 150 }}>
-                    <PrettoSlider
-                      valueLabelDisplay="auto"
-                      aria-label="pretto slider"
-                      defaultValue={50}
-                      min={3}
-                      max={200}
-                      onChange={handleChange}
-                    />
-                  </Box> */}
-                </div>
-
-                <div className='speed-wrapper'>
-                  <h4 className='h4-speed'>speed</h4>
-                  <Box sx={{ width: 150 }}>
-                    <PrettoSlider
-                      valueLabelDisplay="auto"
-                      aria-label="pretto slider"
-                      defaultValue={20}
-                      min={1}
-                      max={100}
-                    />
                   </Box>
                 </div>
               </div>

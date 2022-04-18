@@ -14,14 +14,14 @@
 .left-side-wrapper {
   
   display: flex;
-  background-color: rgba(211, 211, 211, 0.178);
+  background-color: #f3eaea;
   width: 30%;
 }
 
 .graph-wrapper {
   background-color: white;
   width: 70%;
-  /* padding: 0px 10px; */
+  /* transition: 0.2s; */
 }
 
 .controll-bar {
@@ -32,12 +32,15 @@
 }
 
 .left-side-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
+  /* transition: 0.2s; */
 }
 .title-wrapper {
   padding: 1rem;
   font-size: 20px;
+  position: relative;
 }
 
 .visualizer-space {
@@ -97,8 +100,9 @@
 
 .h4-size {
   padding-right: 10px;
-  
+  padding-bottom: 5px;
   margin: auto;
+  font-size: 12;
 }
 
 .h4-speed {
@@ -145,4 +149,27 @@ textarea {
 
 .btn-choice-wrapper:not(:last-child) {
   margin-right: 10px;
+}
+
+.size-wrapper {
+  display: flex;
+}
+
+.side-bar-btn {
+  width: 20px;
+}
+
+.wapper-for-side-btn {
+  position: absolute;
+  left: auto;
+  top: 1%;
+  right: -6%;
+  /* top: 0%;
+  right: -12%;
+  bottom: 0%; */
+  padding: 15px;
+  background-color: #f3eaea;
+  z-index: 1;
+  border-radius: 0px 10px 10px 0px;
+  cursor: pointer;
 }
